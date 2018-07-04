@@ -1,0 +1,41 @@
+<div class="container">
+		<div class="row">
+				<div class="col">
+						<div class="text-center" >
+							<h1>{{currentWeather.heading1}}</h1>
+							<a class="btn btn-primary" href="#">Home</a>
+                            <a class="btn btn-warning" href="#!forecast">Local Forecast</a>
+							<a class="btn btn-success" href="#!global">Global Forecast</a>
+						<hr>
+						<h3>{{currentWeather.heading2}} : {{name}}</h3>
+						<h4>{{currentWeather.heading3}} : <img ng-src="{{icon}}"/></h4>
+					</div>
+					<hr>
+						<table class="gridtable">
+						<thead>
+							<tr>
+							<th>Date</th>
+							<th>Description</th>
+							<th>Temparature</th>
+							<th>Maximum</th>
+							<th>Minimum</th>
+							<th>Wind Speed</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+							<td>{{currentdate | date:'medium'}}</td>
+							<td>{{description | uppercase}}</td>
+							<td><a class = "btn btn-success" ng-init="tempVal=true" ng-show="tempVal" ng-click="tempVal=!tempVal">{{fTemp}}</a>
+							<a class = "btn btn-primary" ng-show="!tempVal" ng-click="tempVal=!tempVal">{{cTemp}}</a>
+							<td><a class = "btn btn-primary" ng-init="tempVal=true" ng-show="tempVal" ng-click="tempVal=!tempVal">{{fTempmax}}</a>
+							<a class = "btn btn-success" ng-show="!tempVal" ng-click="tempVal=!tempVal">{{cTempmax}}</a>
+							<td><a class = "btn btn-primary" ng-init="tempVal=true" ng-show="tempVal" ng-click="tempVal=!tempVal">{{fTempmin}}</a>
+							<a class = "btn btn-success" ng-show="!tempVal" ng-click="tempVal=!tempVal">{{cTempmin}}</a>
+							<td>{{speed}}</td>
+							</tr>
+						</tbody>
+						</table>
+			</div>
+		</div>
+</div>

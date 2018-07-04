@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="Weatherapp">
+<head>
+	<title>WEATHER</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+  <script src="angular.min.js"></script>
+	<script src="angular-route.min.js"></script>
+	<script src="angular-resource.min.js"></script>
+	<script src="script.js"></script>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <a class="navbar-brand" href="#">WEATHER</a>
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <a class="nav-link" href="#!current">Local Ongoing</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#!forecast">Local Forecast</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#!global">Global Forecast</a>
+    </li>
+  </ul>
+</nav>
+<ng-view></ng-view>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<div class="container">
+    <div class="row">
+            <div class="col">
+                    <div class="text-center" >
+                            <h1>{{global.heading}}</h1>
+                                      <a class="btn btn-primary" href="#">Home</a>
+                                      <a class="btn btn-warning" href="#!current">Local Ongoing</a>
+                                      <a class="btn btn-success" href="#!forecast">Local Forecast</a>
+                    </div>
+                    <hr>
+                    <form>
+                        <div class="form-group">
+                          <input type="text" ng-model="city" placeholder="Enter City Here" class="form-control">
+                        </div>
+                        <button type="submit" id="searchbtn" class="btn btn-success" ng-click="processSearch()" value="Search" ng-disabled="city == null">Search</button>
+                    </form>
+                    <hr>
+
+                    <div id="erralert" class="alert alert-info" ng-show="notFound">
+                            <strong>Message: </strong> {{err}}
+                    </div>
+
+                        <table class="gridtable" ng-show="validTable">
+                        <thead>
+                            <tr>
+                            <th>Date</th>
+                            <th>Description</th>
+                            <th>Temparature</th>
+                            <th>Maximum</th>
+                            <th>Minimum</th>
+                            <th>Wind Speed</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="w in currentlist | filter:searchHere">
+                            <td>{{w.dt*1000 | date:'medium'}}</td>
+                            <td>{{w.weather[0].description | uppercase}}</td>
+                            <td><a class = "btn btn-success" ng-init="tempVal=true" ng-show="tempVal" ng-click="tempVal=!tempVal">{{(w.main.temp*(9/5)-459).toFixed(1)}} °F</a>
+                                <a class = "btn btn-primary" ng-show="!tempVal" ng-click="tempVal=!tempVal">{{(w.main.temp-273).toFixed(1)}} °C</a>
+                                <td><a class = "btn btn-primary" ng-init="tempVal=true" ng-show="tempVal" ng-click="tempVal=!tempVal">{{(w.main.temp_max*(9/5)-459).toFixed(1)}} °F</a>
+                                <a class = "btn btn-success" ng-show="!tempVal" ng-click="tempVal=!tempVal">{{(w.main.temp_max-273).toFixed(1)}} °C</a>
+                                <td><a class = "btn btn-primary" ng-init="tempVal=true" ng-show="tempVal" ng-click="tempVal=!tempVal">{{(w.main.temp_min*(9/5)-459).toFixed(1)}} °F</a>
+                                <a class = "btn btn-success" ng-show="!tempVal" ng-click="tempVal=!tempVal">{{(w.main.temp_min-273).toFixed(1)}} °C</a>
+                            <td>{{convertToMph(w.wind.speed)}} mph</td>
+                            </tr>
+                        </tbody>
+                        </table>
+        </div>
+    </div>
+</div>
